@@ -1,0 +1,46 @@
+@if (pokemon) {
+<div
+  class="card-container-color card-max-width nes-container with-title card-container-shadow"
+>
+  <p class="nes-title-custom">
+    {{ pokemon.name | titlecase }} #{{ pokemon.id | pokemonNumber }}
+  </p>
+  <label>
+    <input
+      type="checkbox"
+      class="nes-checkbox is-dark"
+      (click)="handleShinyClick()"
+    />
+    <span></span>
+  </label>
+  <div class="nes-container background-image image-container">
+    <img [src]="imageSrc" [alt]="pokemon.name" />
+  </div>
+  <div class="badges-container">
+    <div *ngFor="let pokemonType of pokemonTypes">
+      <div class="nes-badge">
+        <span
+          class="is-error"
+          [ngStyle]="{
+            'background-color': colorMapper(pokemonType),
+            'box-shadow': generateBoxShadow(pokemonType)
+          }"
+        >
+          {{ pokemonType | titlecase }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="nes-container is-dark stats-container">
+    <div *ngFor="let stat of generateStatsArray().slice(0, 3)">
+      <div>
+        <span>{{ stat.name | titlecase }}: {{ stat.base_stat }} </span>
+      </div>
+    </div>
+  </div>
+  <div class="center-button-div">
+    <button class="nes-btn is-primary" (click)="openModal()">Details</button>
+  </div>
+</div>
+<app-details-overlay />
+}

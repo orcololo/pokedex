@@ -1,0 +1,41 @@
+<ng-template #modalTemplate>
+  <div class="nes-container is-dark">
+    <div class="modal-content">
+      <p class="title">{{ pokemon.name || "" | titlecase }}</p>
+      <p>{{ pokemon.flavor_text_entries.at(0)?.flavor_text }}</p>
+      <div class="info-container">
+        <div class="">
+          <div class="nes-container image-container background-image">
+            <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
+          </div>
+        </div>
+        <div class="nes-table-responsive">
+          <table class="nes-table is-bordered is-dark">
+            <thead>
+              <tr>
+                <th>Stat</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let value of generateStatsArray()">
+              <tr>
+                <td>{{ value.name | titlecase }}</td>
+                <td>{{ value.base_stat }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="nes-btn" (click)="playSound(cries.latest)">
+        Play latest
+      </button>
+
+      <button class="nes-btn" (click)="playSound(cries.legacy)">
+        Play legacy
+      </button>
+    </div>
+    <button class="nes-btn is-primary" (click)="closeModal()">Close</button>
+  </div>
+</ng-template>

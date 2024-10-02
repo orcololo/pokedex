@@ -1,0 +1,17 @@
+<div class="header-container">
+  <div class="icon-and-text">
+    <i class="nes-pokeball is-small"></i><span>PokéAngular</span>
+  </div>
+  <div>
+    <input
+      type="text"
+      class="nes-input maximum-width"
+      [(ngModel)]="searchInput"
+      placeholder="Search for a Pokémon"
+      (input)="searchPokemon()"
+    />
+  </div>
+  <div class="icon-and-text">
+    <a href="http://github.com/orcololo"><i class="nes-icon github"></i></a>
+  </div>
+</div>

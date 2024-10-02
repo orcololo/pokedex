@@ -1,0 +1,16 @@
+@if (!searchRender) {
+<div class="cards-container">
+  <ng-container *ngFor="let pokemon of pokemons">
+    <app-pokemon-card [pokemonName]="pokemon.name" />
+  </ng-container>
+</div>
+<div class="center-button-bottom">
+  <button class="nes-btn is-primary" (click)="loadMore()">Load more</button>
+</div>
+} @else {
+<div class="cards-container">
+  <ng-container *ngFor="let pokemonFromSearch of searchPokemons">
+    <app-pokemon-card [pokemonName]="pokemonFromSearch.name" />
+  </ng-container>
+</div>
+}

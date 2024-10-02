@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+html, body {
+  height: 100%;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1em;
+  background-color: #dee6ee
+}
+
+pre {
+  font-family: monospace
+}
+
+
+
+@import '../node_modules/nes.css/css/nes.css';
