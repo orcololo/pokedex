@@ -4,9 +4,9 @@ export interface SpeciesInfo {
   color: Color;
   egg_groups: EggGroup[];
   evolution_chain: EvolutionChain;
-  evolves_from_species: any;
+  evolves_from_species: Species | null;
   flavor_text_entries: FlavorTextEntry[];
-  form_descriptions: any[];
+  form_descriptions: FormDescription[];
   forms_switchable: boolean;
   gender_rate: number;
   genera: Genera[];
@@ -125,6 +125,17 @@ export interface Variety {
 }
 
 export interface Pokemon {
+  name: string;
+  url: string;
+}
+
+// Additional interfaces for proper typing
+export interface FormDescription {
+  description: string;
+  language: Language;
+}
+
+export interface Species {
   name: string;
   url: string;
 }

@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 export class DetailsOverlayComponent implements OnInit {
   pokemon!: DetailedPokemon;
   cries!: Cries;
-  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
+  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<unknown>;
 
   constructor(
     private modalService: ModalService,
