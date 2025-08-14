@@ -58,33 +58,18 @@ export class PokemonApiService {
   }
 
   fetchPokemonList(): void {
-    if (this.offset == 0) {
-      this.httpClient
-        .get<PokemonResults>(
-          `${this.baseUrl}/pokemon?offset=${this.offset}&limit=${this.limit}`
-        )
-        .pipe(
-          tap((res) => {
-            this.results = res;
-            this.offset += this.limit;
-          })
-        )
-        .pipe(catchError(this.handleError))
-        .subscribe();
-    } else {
-      this.httpClient
-        .get<PokemonResults>(
-          `${this.baseUrl}/pokemon?offset=${this.offset}&limit=${this.limit}`
-        )
-        .pipe(
-          tap((res) => {
-            this.results = res;
-            this.offset += this.limit;
-          })
-        )
-        .pipe(catchError(this.handleError))
-        .subscribe();
-    }
+    this.httpClient
+      .get<PokemonResults>(
+        `${this.baseUrl}/pokemon?offset=${this.offset}&limit=${this.limit}`
+      )
+      .pipe(
+        tap((res) => {
+          this.results = res;
+          this.offset += this.limit;
+        }),
+        catchError(this.handleError)
+      )
+      .subscribe();
   }
 
   getPokemonsWithDetailsList(): DetailedPokemon[] {
@@ -99,7 +84,7 @@ export class PokemonApiService {
     this.hasSearchResults.next(bool);
   }
 
-  setPokemonFromData2(pokemons: Result[]) {
+  setPokemonsFromSearchResults(pokemons: Result[]) {
     from(pokemons)
       .pipe(
         mergeMap((pokemon) => {
@@ -144,7 +129,7 @@ export class PokemonApiService {
 
   fetchAllPokemons(): void {
     this.httpClient
-      .get<PokemonResults>(`${this.baseUrl}/pokemon?limit=1302}`)
+      .get<PokemonResults>(`${this.baseUrl}/pokemon?limit=1302`)
       .pipe(take(1))
       .subscribe((res) => {
         this.allPokemons.next(res.results);

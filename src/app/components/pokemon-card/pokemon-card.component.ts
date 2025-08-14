@@ -75,21 +75,24 @@ export class PokemonCardComponent implements OnInit {
 
   handleShinyClick(): void {
     if (!this.pokemon?.sprites.front_default) {
-      this.imageSrc =
-        'https://static.wikia.nocookie.net/bec6f033-936d-48c5-9c1e-7fb7207e28af/scale-to-width/755';
+      this.imageSrc = '/unknown.webp';
+      return;
     }
+    
     if (this.shiny) {
-      this.imageSrc = this.pokemon!.sprites.front_default;
+      this.imageSrc = this.pokemon.sprites.front_default;
       this.shiny = false;
     } else {
-      this.imageSrc = this.pokemon!.sprites.front_shiny;
+      this.imageSrc = this.pokemon.sprites.front_shiny;
       this.shiny = true;
     }
   }
 
   openModal() {
-    this.modalService.setPokemon(this.pokemon!);
-    this.detailsOverlay.openModal();
+    if (this.pokemon) {
+      this.modalService.setPokemon(this.pokemon);
+      this.detailsOverlay.openModal();
+    }
   }
 
   closeModal() {

@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
       this.pokemons = res;
     });
     this.pokemonsFromSearch.pipe(debounceTime(1500)).subscribe((res) => {
-      this.pokemonService.setPokemonFromData2(res);
+      this.pokemonService.setPokemonsFromSearchResults(res);
     });
   }
 }
